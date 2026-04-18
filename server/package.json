@@ -1,7 +1,7 @@
 {
-  "name": "server",
+  "name": "Kalai-Creative-Studio",
   "version": "1.0.0",
-  "description": "",
+  "description": "E-Commerce Website",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -16,8 +16,11 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.0",
     "express": "^5.2.1",
+    "google-auth-library": "^10.6.2",
+    "helmet": "^8.1.0",
     "jwt": "^0.2.0",
     "mongoose": "^9.4.1",
+    "morgan": "^1.10.1",
     "nodemon": "^3.1.14"
   }
 }
