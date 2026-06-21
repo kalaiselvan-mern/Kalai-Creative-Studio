@@ -32,11 +32,12 @@ export default function Product() {
     { name: "Thumbnail Preset", enum: "Preset", icon: <ImageIcon className="w-5 h-5 mr-3" /> },
     { name: "Text Animation", enum: "Text", icon: <CaseUpper className="w-5 h-5 mr-3" /> },
   ];
+const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get("http://localhost:7000/api/product/all");
+        const res = await axios.get(`${API_URL}/api/product/all`);
         setProduct(res.data.data);
       } catch (error) {
         console.error("Error", error);

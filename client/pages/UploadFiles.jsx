@@ -22,11 +22,12 @@ export default function UploadForm() {
       [name]: type === "checkbox" ? checked : type === "number" ? Number(value) : value,
     });
   };
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitting Data to Backend:", formData);
-     axios.post("http://localhost:7000/api/product/create" ,formData)
+     axios.post(`${API_URL}/api/product/create`, formData)
     alert("Product Uploaded Successfully!");
   };
 

@@ -7,6 +7,7 @@ export default function LoginPage() {
   
   const login = useAuthStore((state) => state.login);
   const navigate = useNavigate(); // 2. Navigate hook initialize pandrom
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSuccess = async (credentialResponse) => {
     const token = credentialResponse.credential;
@@ -14,7 +15,7 @@ export default function LoginPage() {
 
     try {
       // 3. Backend API Call
-      const res = await axios.post("http://localhost:7000/api/auth/google", { token });
+      const res = await axios.post(`${API_URL}/api/auth/google`, { token });
       
       console.log("Backend Success Mapla:", res.data);
       
