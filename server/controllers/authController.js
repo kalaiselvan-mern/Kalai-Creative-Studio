@@ -2,7 +2,7 @@ import { OAuth2Client } from "google-auth-library";
 import { User } from "../models/user.js";
 
 const client = new OAuth2Client(
-  "12795157590-610td72e50pq3avr2i7b3940ijhokmdd.apps.googleusercontent.com"
+ process.env.GOOGLE_CLIENT_ID
 ); // Google OAuth URl
 
 export const googleLogin = async (req, res) => {
@@ -11,7 +11,7 @@ export const googleLogin = async (req, res) => {
 
     const ticket = await client.verifyIdToken({
       idToken: token,
-      audience: "12795157590-610td72e50pq3avr2i7b3940ijhokmdd.apps.googleusercontent.com",
+      audience: process.env.GOOGLE_CLIENT_ID,
     });
 
     const payload = ticket.getPayload();

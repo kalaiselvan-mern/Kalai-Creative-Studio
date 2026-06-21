@@ -24,8 +24,8 @@ app.use(express.urlencoded({
 
 app.use(cors(
     {
-        origin:['http://localhost:5173'," https://kalai-creative-studio.vercel.app"],
-        methods:["GET",'POST','DELETE','PUT'],
+        origin:['http://localhost:5173',"https://kalai-creative-studio.vercel.app","https://kalai-creative-studio-e6rbv3hf3-kalai-edits-projects.vercel.app"],
+        methods:["GET",'POST','DELETE','PUT' , 'OPTIONS'],
         credentials:true
     }
 ))
