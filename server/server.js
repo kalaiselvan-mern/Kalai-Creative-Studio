@@ -22,24 +22,18 @@ app.use(express.urlencoded({
     extended:true
 }))
 
-app.use(cors(
-    {
-        origin:['http://localhost:5173',"https://kalai-creative-studio.vercel.app","https://kalai-creative-studio-e6rbv3hf3-kalai-edits-projects.vercel.app"],
-        methods:["GET",'POST','DELETE','PUT' , 'OPTIONS'],
-        credentials:true
-    }
-))
+app.use(cors({
+  origin: function (origin, callback) {
+    callback(null, true); 
+  },
+  credentials: true
+}));
 
 
 // Product Data Api Logic 
 
-app.use("/api/product", router)
-
-// Auth Api Logic
-
+app.use("/api/product", router);
 app.use("/api/auth", authRoute  );
-
-
 
 app.get("/api",(req,res)=>{
   res.send({
