@@ -4,7 +4,6 @@ import LoginPage from "../pages/LoginPage";
 import Product from "../pages/Product";
 import Sidebar from "../layout/SideBar";
 import UploadForm from "../pages/UploadFiles";
-import Payment from "../pages/Payment";
 import Error from "../pages/Error";
 import JoinStudio from "../pages/JoinStudio";
 import AdminRoutes from "../src/ProtectedRoute";
@@ -32,9 +31,7 @@ function App() {
           <Route path="/user/joinstudio" element={<JoinStudio />} />
         </Route>
 
-          <Route path="/admin/upload-files" element={<AdminRoutes><UploadForm /></AdminRoutes>} />
-          <Route path="/admin/payments" element={<Payment />} />
-         
+          <Route path="/admin/upload-files" element={<AdminRoutes><UploadForm /></AdminRoutes>} />         
       </Routes>
     </BrowserRouter>
   );

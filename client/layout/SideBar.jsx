@@ -11,14 +11,13 @@ export default function Sidebar() {
   
   const role = user?.role || "admin";
 
-  // 🔴 ADMIN LINKS (3 Links)
+  // 🔴 ADMIN LINKS
   const adminLinks = [
     { name: "Store", icon: Store, to: "/" },
     { name: "Upload Files", icon: UploadCloud, to: "/admin/upload-files" },
-    { name: "Payment", icon: Wallet, to: "/admin/payments" },
   ];
 
-  // 🔵 USER LINKS (3 Links)
+  // 🔵 USER LINKS
   const userLinks = [
     { name: "Store", icon: Store, to: "/" },
     { name: "Purchased", icon: Package, to: "/user/orders" },
@@ -34,7 +33,7 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* 📱 MOBILE HAMBURGER BUTTON (Cyan theme) */}
+      {/* 📱 MOBILE HAMBURGER BUTTON */}
       <button
         onClick={() => setIsOpen(true)}
         className="md:hidden fixed top-4 left-4 z-40 p-2 bg-zinc-900 text-cyan-400 rounded-md border border-cyan-500/30 hover:bg-cyan-950/50 transition-colors"
@@ -59,16 +58,14 @@ export default function Sidebar() {
         
         {/* BRAND LOGO */}
         <div className="mb-8 flex justify-between items-center">
-          <div className="text-center cursor-pointer"> <Link to={"/"}>
-          
+          <Link to="/" className="text-center cursor-pointer">
             <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
               KALAI 
             </h1>
             <p className="text-sm text-blue-400/80 font-bold tracking-wider">
-             CREATIVE STUDIO {role === "admin" && <span className="text-cyan-300 ml-1">(ADMIN)</span>}
+              CREATIVE STUDIO {role === "admin" && <span className="text-cyan-300 ml-1">(ADMIN)</span>}
             </p>
           </Link>
-          </div>
           <button onClick={() => setIsOpen(false)} className="md:hidden text-cyan-500 hover:text-cyan-300">
             <X className="w-6 h-6" />
           </button>

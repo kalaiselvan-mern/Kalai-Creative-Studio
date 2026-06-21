@@ -20,7 +20,7 @@ const paymentSchema = new mongoose.Schema({
   },
   razorpayOrderId: {
     type: String,
-    required: true, // Razorpay first generate ID
+    required: true, 
   },
   razorpayPaymentId: {
     type: String,
