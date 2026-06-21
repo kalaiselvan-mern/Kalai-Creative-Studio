@@ -6,6 +6,7 @@ import dbConnect from "./config/dbConnect.js"
 import router from "./routes/productRoute.js";
 import morgan from "morgan";
 import helmet from 'helmet';
+import authRoute from "./routes/authRoute.js";
 
  dotenv.config()
 
@@ -20,6 +21,7 @@ app.use(helmet())
 app.use(express.urlencoded({
     extended:true
 }))
+
 app.use(cors(
     {
         origin:['http://localhost:5173'," https://kalai-creative-studio.vercel.app"],
@@ -32,6 +34,11 @@ app.use(cors(
 // Product Data Api Logic 
 
 app.use("/api/product", router)
+
+// Auth Api Logic
+
+app.use("/api/auth", authRoute  );
+
 
 
 app.get("/api",(req,res)=>{
