@@ -14,7 +14,7 @@ export default function Sidebar() {
   // 🔴 ADMIN LINKS
   const adminLinks = [
     { name: "Store", icon: Store, to: "/" },
-    { name: "Upload Files", icon: UploadCloud, to: "/admin/upload-files" },
+   
      { name: "Join Studio Partner", icon: Heart, to: "/user/joinstudio" },
   ];
 
@@ -58,7 +58,7 @@ export default function Sidebar() {
         
         {/* BRAND LOGO */}
         <div className="mb-8 flex justify-between items-center">
-          <Link to="/" className="text-center cursor-pointer">
+          <Link to={"/"} className="text-center cursor-pointer">
             <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
               KALAI 
             </h1>
@@ -95,7 +95,7 @@ export default function Sidebar() {
 
         {/* USER PROFILE & LOGOUT */}
         <div className="mt-auto pt-4 border-t border-zinc-800/80 flex justify-between items-center">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 text-center">
             <div className="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center font-black text-white shadow-lg shadow-cyan-500/20">
               {user ? user.name.charAt(0).toUpperCase() : "U"}
             </div>
@@ -109,9 +109,7 @@ export default function Sidebar() {
             </div>
           </div>
           
-          <button onClick={handleLogout} className="text-zinc-500 hover:text-cyan-400 hover:bg-cyan-500/10 p-2 rounded-md transition-all cursor-pointer">
-            <LogOut className="w-5 h-5" />
-          </button>
+       
         </div>
 
       </aside>

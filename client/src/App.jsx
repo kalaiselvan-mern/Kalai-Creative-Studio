@@ -6,7 +6,6 @@ import Sidebar from "../layout/SideBar";
 import UploadForm from "../pages/UploadFiles";
 import Error from "../pages/Error";
 import JoinStudio from "../pages/JoinStudio";
-import AdminRoutes from "../src/ProtectedRoute";
 
 const Layout = () => {
   return (
@@ -31,7 +30,7 @@ function App() {
           <Route path="/user/joinstudio" element={<JoinStudio />} />
         </Route>
 
-          <Route path="/admin/upload-files" element={<AdminRoutes><UploadForm /></AdminRoutes>} />         
+          <Route path="/admin/upload-files" element={<UploadForm />} />
       </Routes>
     </BrowserRouter>
   );

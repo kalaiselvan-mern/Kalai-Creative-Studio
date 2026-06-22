@@ -1,19 +1,49 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+  CardFooter,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Home, Video, ImageIcon, Zap, CaseUpper } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectValue, SelectTrigger } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+  SelectTrigger,
+} from "@/components/ui/select";
 import Message from "../layout/Message";
+import { Link } from "react-router-dom";
 
 // 1. Array-ஐ வெளியே வைப்பது React-ல் நல்ல பழக்கம் (Performance Boost)
 const categories = [
-  { name: "All Product", enum: "All Assets", icon: <Home className="w-5 h-5 mr-3" /> },
-  { name: "4K CC Presets", enum: "4K CC", icon: <Video className="w-5 h-5 mr-3" /> },
+  {
+    name: "All Product",
+    enum: "All Assets",
+    icon: <Home className="w-5 h-5 mr-3" />,
+  },
+  {
+    name: "4K CC Presets",
+    enum: "4K CC",
+    icon: <Video className="w-5 h-5 mr-3" />,
+  },
   { name: "Assets", enum: "Assets", icon: <Zap className="w-5 h-5 mr-3" /> },
-  { name: "Thumbnail Preset", enum: "Preset", icon: <ImageIcon className="w-5 h-5 mr-3" /> },
-  { name: "Text Animation", enum: "Text", icon: <CaseUpper className="w-5 h-5 mr-3" /> },
+  {
+    name: "Thumbnail Preset",
+    enum: "Preset",
+    icon: <ImageIcon className="w-5 h-5 mr-3" />,
+  },
+  {
+    name: "Text Animation",
+    enum: "Text",
+    icon: <CaseUpper className="w-5 h-5 mr-3" />,
+  },
 ];
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -24,32 +54,73 @@ export default function Product() {
   const [searchQuery, setSearchQuery] = useState("");
 
   // 2. Short & Clean API Call
-useEffect(() => {
-  axios
-    .get(`${API_URL}/api/product/all`)
-    .then((res) => {
-      setProduct(res.data.data);      
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
-}, []);
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/api/product/all`)
+      .then((res) => {
+        setProduct(res.data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  const handlePayment = async (item) => {
+    try {
+      // 1. Backend-க்கு ஆர்டர் கிரியேட் பண்ண ரெக்வஸ்ட் அனுப்புறோம்
+      const { data } = await axios.post(`${API_URL}/api/payment/checkout`, {
+        amount: item.price,
+        productId: item._id,
+      });
+
+      // 2. Razorpay Options
+      const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+        amount: data.order.amount,
+        currency: "INR",
+        name: "Kalai Creative Studio",
+        description: item.name,
+        order_id: data.order.id,
+        handler: async function (response) {
+          alert("Payment Successful! Drive link sent to your email.");
+        },
+        theme: { color: "#06b6d4" },
+      };
+
+      const razor = new window.Razorpay(options);
+      razor.open();
+    } catch (error) {
+      console.error(error);
+      alert("Payment Failed!");
+    }
+  };
   // 3. Simplified Filter Logic
-const filteredProducts = product.filter((item) => {
-   
-    const activeEnum = categories.find((c) => c.name === selectedCategory)?.enum;
-    const matchCategory = selectedCategory === "All Product" || item.category === activeEnum || item.enum === activeEnum;
-    const safeName = item?.name || ""; 
-    const matchSearch = safeName.toLowerCase().includes(searchQuery.toLowerCase());
-    
+  const filteredProducts = product.filter((item) => {
+    const activeEnum = categories.find(
+      (c) => c.name === selectedCategory,
+    )?.enum;
+    const matchCategory =
+      selectedCategory === "All Product" ||
+      item.category === activeEnum ||
+      item.enum === activeEnum;
+    const safeName = item?.name || "";
+    const matchSearch = safeName
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
     return matchCategory && matchSearch;
   });
   return (
     <main className="min-h-screen w-full bg-black text-white p-6 md:p-12 lg:p-16 selection:bg-cyan-500/30 flex flex-col items-center">
-      
       <header className="w-full max-w-4xl text-center mb-16 mt-8">
         <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 mb-4">
-          KALAI CREATIVE STUDIO   <span className="text-zinc-400 text-3xl"> v <span className="text-md">1.0</span></span>
+          KALAI CREATIVE STUDIO{" "}
+          <Link to={"/admin/upload-files"}>
+            <span className="text-zinc-400 text-3xl">
+              {" "}
+              v <span className="text-md">1.0</span>
+            </span>
+          </Link>
         </h1>
         <p className="text-zinc-400 text-sm md:text-lg font-medium tracking-wide">
           Premium Editing Assets & Professional CC Presets
@@ -63,15 +134,22 @@ const filteredProducts = product.filter((item) => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          
+
           <Select value={selectedCategory} onValueChange={setSelectedCategory}>
             <SelectTrigger className="w-full sm:w-[200px] bg-zinc-900 border-zinc-800 text-white">
               <SelectValue placeholder="All product" />
             </SelectTrigger>
             <SelectContent className="bg-zinc-900 border-zinc-800 text-white">
               {categories.map((cat, i) => (
-                <SelectItem key={i} value={cat.name} className="hover:bg-zinc-800 cursor-pointer">
-                  <div className="flex items-center">{cat.icon}{cat.name}</div>
+                <SelectItem
+                  key={i}
+                  value={cat.name}
+                  className="hover:bg-zinc-800 cursor-pointer"
+                >
+                  <div className="flex items-center">
+                    {cat.icon}
+                    {cat.name}
+                  </div>
                 </SelectItem>
               ))}
             </SelectContent>
@@ -82,45 +160,63 @@ const filteredProducts = product.filter((item) => {
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((item) => (
-            <Card key={item._id} className="bg-zinc-950 border-zinc-800 hover:border-cyan-500/40 transition-all duration-500 shadow-2xl overflow-hidden group flex flex-col">
-              
+            <Card
+              key={item._id}
+              className="bg-zinc-950 border-zinc-800 hover:border-cyan-500/40 transition-all duration-500 shadow-2xl overflow-hidden group flex flex-col"
+            >
               <div className="aspect-video overflow-hidden relative">
-                <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img
+                  src={item.imageUrl}
+                  alt={item.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
                 <Badge className="absolute top-3 left-3 bg-cyan-600 text-white border-none px-3 py-1 font-bold">
                   {item.category || item.enum}
                 </Badge>
               </div>
 
               <CardHeader className="space-y-1">
-                <CardTitle className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">{item.name}</CardTitle>
+                <CardTitle className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                  {item.name}
+                </CardTitle>
               </CardHeader>
 
               <CardContent className="flex-grow">
-                <CardDescription className="text-zinc-400 text-sm leading-relaxed line-clamp-3">{item.description}</CardDescription>
+                <CardDescription className="text-zinc-400 text-sm leading-relaxed line-clamp-3">
+                  {item.description}
+                </CardDescription>
               </CardContent>
 
               <CardFooter className="flex justify-between items-center border-t border-zinc-900 pt-6 mt-2 bg-zinc-900/20">
                 <div className="flex flex-col">
-                  <span className="text-zinc-500 text-[10px] uppercase font-bold tracking-widest">Investment</span>
-                  <span className="text-3xl font-black text-white italic">₹{item.price}</span>
+                  <span className="text-zinc-500 text-[10px] uppercase font-bold tracking-widest">
+                    Investment
+                  </span>
+                  <span className="text-3xl font-black text-white italic">
+                    ₹{item.price}
+                  </span>
                 </div>
-                <Button className="bg-cyan-500 hover:bg-cyan-400 text-black font-black h-12 px-8 rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.4)] transform active:scale-95 transition-all">
+                <Button
+                  onClick={() => handlePayment(item)} // பட்டனை கிளிக் பண்ணா இந்த பங்க்ஷன் ரன் ஆகும்
+                  className="bg-cyan-500 hover:bg-cyan-400 text-black font-black h-12 px-8 rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.4)] transform active:scale-95 transition-all"
+                >
                   BUY NOW
                 </Button>
               </CardFooter>
             </Card>
           ))
         ) : (
-          <p className="col-span-full text-center py-20 text-zinc-500">No products found in this category.</p>
+          <p className="col-span-full text-center py-20 text-zinc-500">
+            No products found in this category.
+          </p>
         )}
       </section>
 
       <Message />
-      
+
       <footer className="mt-20 text-center text-zinc-600 text-xs font-medium tracking-tighter uppercase">
         Built with ❤️ for Editors by Kalai Editz
       </footer>
-
     </main>
   );
 }
