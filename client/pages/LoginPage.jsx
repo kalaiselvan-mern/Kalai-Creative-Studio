@@ -12,9 +12,6 @@ export default function LoginPage() {
   const handleSuccess = async (credentialResponse) => {
     try {
       const token = credentialResponse.credential;
-
-      console.log("Google Token:", token);
-
       const res = await axios.post(
         `${API_URL}/api/auth/google`,
         { token },
@@ -24,8 +21,6 @@ export default function LoginPage() {
           },
         }
       );
-
-      console.log("Backend Response:", res.data);
 
       login(res.data.user);
 
@@ -40,7 +35,6 @@ export default function LoginPage() {
       console.error(error);
 
       if (error.response) {
-        console.log(error.response.data);
         alert(error.response.data.message);
       } else {
         alert("Server Error");

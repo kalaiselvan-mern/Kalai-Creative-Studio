@@ -28,8 +28,7 @@ useEffect(() => {
   axios
     .get(`${API_URL}/api/product/all`)
     .then((res) => {
-      setProduct(res.data.data);  
-      console.log(res.data.data);     
+      setProduct(res.data.data);      
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
@@ -50,7 +49,7 @@ const filteredProducts = product.filter((item) => {
       
       <header className="w-full max-w-4xl text-center mb-16 mt-8">
         <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 mb-4">
-          KALAI CREATIVE STUDIO   
+          KALAI CREATIVE STUDIO   <span className="text-zinc-400 text-3xl"> v <span className="text-md">1.0</span></span>
         </h1>
         <p className="text-zinc-400 text-sm md:text-lg font-medium tracking-wide">
           Premium Editing Assets & Professional CC Presets

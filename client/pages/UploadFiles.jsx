@@ -26,7 +26,7 @@ export default function UploadForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting Data to Backend:", formData);
+
      axios.post(`${API_URL}/api/product/create`, formData)
     alert("Product Uploaded Successfully!");
   };
