@@ -24,20 +24,27 @@ export default function Product() {
   const [searchQuery, setSearchQuery] = useState("");
 
   // 2. Short & Clean API Call
-  useEffect(() => {
-    axios.get(`${API_URL}/api/product/all`)
-      .then((res) => setProduct(res.data.data))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
-
+useEffect(() => {
+  axios
+    .get(`${API_URL}/api/product/all`)
+    .then((res) => {
+      setProduct(res.data.data);  
+      console.log(res.data.data);     
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+}, []);
   // 3. Simplified Filter Logic
-  const filteredProducts = product.filter((item) => {
+const filteredProducts = product.filter((item) => {
+   
     const activeEnum = categories.find((c) => c.name === selectedCategory)?.enum;
     const matchCategory = selectedCategory === "All Product" || item.category === activeEnum || item.enum === activeEnum;
-    const matchSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const safeName = item?.name || ""; 
+    const matchSearch = safeName.toLowerCase().includes(searchQuery.toLowerCase());
+    
     return matchCategory && matchSearch;
   });
-
   return (
     <main className="min-h-screen w-full bg-black text-white p-6 md:p-12 lg:p-16 selection:bg-cyan-500/30 flex flex-col items-center">
       

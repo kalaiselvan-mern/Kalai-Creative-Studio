@@ -28,7 +28,7 @@ export const getAllProduct =async (req ,res ) =>{
 
    } catch (error) {
      console.error("data not found " ,{error});
-     req.status(500).json({success:false,message:error.message})
+     res.status(500).json({success:false,message:error.message})
      
    } 
 

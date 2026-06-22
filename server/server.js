@@ -4,8 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import dbConnect from "./config/dbConnect.js"
 import router from "./routes/productRoute.js";
-import morgan from "morgan";
-import helmet from 'helmet';
+
 import authRoute from "./routes/authRoute.js";
 
  dotenv.config()
@@ -16,8 +15,6 @@ const PORT = process.env.PORT  || 7000
 dbConnect()
 
 app.use(express.json())
-app.use(morgan("dev"))
-app.use(helmet())
 app.use(express.urlencoded({
     extended:true
 }))
@@ -28,7 +25,6 @@ app.use(cors({
   },
   credentials: true
 }));
-
 
 // Product Data Api Logic 
 
