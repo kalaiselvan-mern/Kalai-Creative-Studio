@@ -20,9 +20,8 @@ app.use(express.urlencoded({
 }))
 
 app.use(cors({
-  origin: function (origin, callback) {
-    callback(null, true); 
-  },
+  origin: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 
