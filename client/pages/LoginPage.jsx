@@ -27,9 +27,9 @@ export default function LoginPage() {
       alert(res.data.user.message);
 
       if (res.data.user.role === "admin") {
-        navigate("/admin-dashboard");
-      } else {
         navigate("/");
+      } else {
+        navigate("/user/joinstudio");
       }
     } catch (error) {
       console.error(error);

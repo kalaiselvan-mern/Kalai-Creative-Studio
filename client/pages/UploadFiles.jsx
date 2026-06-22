@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { UploadCloud, Link as LinkIcon, DollarSign, Type, FileText, Tag, Star, Send } from "lucide-react";
+import { UploadCloud, Link as LinkIcon, DollarSign, Type, FileText, Tag, Star, Send , House } from "lucide-react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function UploadForm() {
   // உன்னோட JSON ஸ்ட்ரக்சரை அப்படியே State-ல வச்சிருக்கோம்
@@ -175,7 +176,15 @@ export default function UploadForm() {
           </button>
 
         </form>
+           <Link to={"/"}>
+            <button className="w-full mt-6 bg-cyan-600 hover:bg-cyan-500 text-white font-black text-lg py-4 rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all flex justify-center items-center gap-2"
+ >
+            <House  className="w-5 h-5" />
+            Back To Dashboard
+          </button>
+           </Link>
       </div>
+      
     </div>
   );
 }

@@ -12,7 +12,6 @@ export default function JoinStudio() {
     const formData = new FormData();
     formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
     formData.append("name", data.name);
-    formData.append("email", data.email);
     formData.append("mobile", data.mobile);
     formData.append("message", data.message);
 
@@ -53,10 +52,10 @@ export default function JoinStudio() {
         <div className="flex flex-col justify-center space-y-8">
           <div>
             <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
-              Let's build <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">magic</span> together! 🚀
+              Let's Join <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">magic</span> together! 🚀
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              Have a project in mind or just want to chat about tech? Feel free to reach out.
+            <p className="text-gray-400 capitalize text-lg leading-relaxed">
+              You are preset to sale  please you can contact to me ❤️😍
             </p>
           </div>
 
@@ -68,7 +67,7 @@ export default function JoinStudio() {
               </div>
               <div>
                 <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">Email Me</p>
-                <p className="text-gray-200 font-semibold text-lg">kalaiselvan.tech@gmail.com</p>
+                <p className="text-gray-200 font-semibold text-lg">kalaiedits007@gmail.com</p>
               </div>
             </div>
           </div>
@@ -91,11 +90,7 @@ export default function JoinStudio() {
               <input {...register("name", { required: "Name Is Required" })} type="text" placeholder="Ex: John Doe" className="w-full bg-[#0a0a0a] text-white px-5 py-4 rounded-xl border border-gray-800 focus:border-cyan-500 outline-none transition" />
               {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
             </div>
-            <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 ml-1">Your Email</label>
-              <input {...register("email", { required: "Email Is Required" })} type="email" placeholder="Ex: jon1234@gmail.com " className="w-full bg-[#0a0a0a] text-white px-5 py-4 rounded-xl border border-gray-800 focus:border-cyan-500 outline-none transition" />
-              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
-            </div>
+    
 
             <div>
               <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 ml-1">Your Mobile</label>
@@ -105,7 +100,7 @@ export default function JoinStudio() {
 
             <div>
               <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 ml-1">Message</label>
-              <textarea {...register("message", { required: "Please Enter A Message" })} rows="4" placeholder="What's on your mind?" className="w-full bg-[#0a0a0a] text-white px-5 py-4 rounded-xl border border-gray-800 focus:border-cyan-500 outline-none transition resize-none" />
+              <textarea {...register("message", { required: "Please Enter A Message" })} rows="4" placeholder="Adobe Or Davinci Reslove?" className="w-full bg-[#0a0a0a] text-white px-5 py-4 rounded-xl border border-gray-800 focus:border-cyan-500 outline-none transition resize-none" />
               {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}
             </div>
 

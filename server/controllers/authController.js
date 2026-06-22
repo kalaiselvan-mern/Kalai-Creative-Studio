@@ -53,6 +53,6 @@ export const googleLogin = async (req, res) => {
     console.error("Google Auth Error:", error);
     res
       .status(400)
-      .json({ success: false, message: "Google verification failed mapla!" });
+      .json({ success: false, message: "Google verification failed 😔" });
   }
 };

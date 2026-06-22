@@ -15,12 +15,12 @@ export default function Sidebar() {
   const adminLinks = [
     { name: "Store", icon: Store, to: "/" },
     { name: "Upload Files", icon: UploadCloud, to: "/admin/upload-files" },
+     { name: "Join Studio Partner", icon: Heart, to: "/user/joinstudio" },
   ];
 
   // 🔵 USER LINKS
   const userLinks = [
     { name: "Store", icon: Store, to: "/" },
-    { name: "Purchased", icon: Package, to: "/user/orders" },
     { name: "Join Studio Partner", icon: Heart, to: "/user/joinstudio" },
   ];
 
