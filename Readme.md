@@ -1,3 +1,4 @@
+<img width="1909" height="909" alt="Screenshot 2026-06-23 144503" src="https://github.com/user-attachments/assets/d386ed22-d369-48cb-9800-8de81f0d8898" />
 <h1 align="center">🎬 Kalai Creative Studio</h1>
 
 <p align="center">
