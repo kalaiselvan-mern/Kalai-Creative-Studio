@@ -1,52 +1,90 @@
 import { useState } from "react";
-import { UploadCloud, Link as LinkIcon, DollarSign, Type, FileText, Tag, Star, Send , House } from "lucide-react";
+import {
+  UploadCloud,
+  Link as LinkIcon,
+  DollarSign,
+  Type,
+  FileText,
+  Tag,
+  Star,
+  Send,
+  House,
+  Lock,
+  Video,
+} from "lucide-react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function UploadForm() {
-  // உன்னோட JSON ஸ்ட்ரக்சரை அப்படியே State-ல வச்சிருக்கோம்
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     price: "",
     imageUrl: "",
     downloadUrl: "",
+    youtubeLink: "", 
     category: "Assets",
     isPremium: true,
+    adminKey: "",
   });
 
-  // எல்லா Input-க்கும் ஒரே onChange function
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : type === "number" ? Number(value) : value,
+      [name]:
+        type === "checkbox"
+          ? checked
+          : type === "number"
+            ? Number(value)
+            : value,
     });
   };
+
   const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-     axios.post(`${API_URL}/api/product/create`, formData)
-    alert("Product Uploaded Successfully!");
+    try {
+      const response = await axios.post(
+        `${API_URL}/api/product/create`,
+        formData,
+      );
+      alert("Product Uploaded Successfully! 🔥");
+      
+      // அப்லோட் ஆனதும் ஃபார்மை காலியாக்க இதையும் அப்டேட் பண்ணியாச்சு
+      setFormData({
+        name: "",
+        description: "",
+        price: "",
+        imageUrl: "",
+        downloadUrl: "",
+        youtubeLink: "",
+        category: "Assets",
+        isPremium: true,
+        adminKey: "",
+      });
+    } catch (error) {
+      console.error("Upload Error:", error);
+      alert(error.response?.data?.message || "Upload Failed! Check Admin Key.");
+    }
   };
 
   return (
     <div className="min-h-screen bg-black text-white p-6 md:p-12 flex justify-center items-center">
       <div className="w-full max-w-2xl bg-zinc-950 border border-zinc-800 rounded-2xl shadow-2xl p-8">
-        
         {/* Header */}
         <div className="flex items-center gap-3 mb-8 border-b border-zinc-800 pb-4">
           <UploadCloud className="w-8 h-8 text-cyan-400" />
           <div>
             <h2 className="text-2xl font-black text-white">Upload New Asset</h2>
-            <p className="text-sm text-zinc-500">Add a new preset or plugin to your store</p>
+            <p className="text-sm text-zinc-500">
+              Add a new preset or plugin to your store
+            </p>
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          
           {/* 1. Name & Price (Row) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
@@ -69,7 +107,7 @@ export default function UploadForm() {
                 <DollarSign className="w-4 h-4 text-cyan-500" /> Price (₹)
               </label>
               <input
-         
+                type="number"
                 name="price"
                 value={formData.price}
                 onChange={handleChange}
@@ -129,7 +167,22 @@ export default function UploadForm() {
             </div>
           </div>
 
-          {/* 4. Category & Premium Toggle (Row) */}
+          {/* 4. YouTube Preview Link (புதுசா சேர்த்தது) */}
+          <div className="space-y-2">
+            <label className="flex items-center gap-2 text-sm font-bold text-zinc-400">
+              <Video className="w-4 h-4 text-cyan-500" /> YouTube Preview Link (Optional)
+            </label>
+            <input
+              type="url"
+              name="youtubeLink"
+              value={formData.youtubeLink}
+              onChange={handleChange}
+              placeholder="https://www.youtube.com/watch?v=..."
+              className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors text-sm"
+            />
+          </div>
+
+          {/* 5. Category & Premium Toggle (Row) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
             <div className="space-y-2">
               <label className="flex items-center gap-2 text-sm font-bold text-zinc-400">
@@ -159,11 +212,29 @@ export default function UploadForm() {
                   className="w-5 h-5 accent-cyan-500 cursor-pointer"
                 />
                 <span className="flex items-center gap-2 text-white font-bold">
-                  <Star className={`w-4 h-4 ${formData.isPremium ? "text-yellow-400 fill-yellow-400" : "text-zinc-500"}`} />
+                  <Star
+                    className={`w-4 h-4 ${formData.isPremium ? "text-yellow-400 fill-yellow-400" : "text-zinc-500"}`}
+                  />
                   Premium Asset
                 </span>
               </label>
             </div>
+          </div>
+
+          {/* Admin Secret Key */}
+          <div className="space-y-2 mt-4 p-4 border border-red-900/50 bg-red-950/10 rounded-xl">
+            <label className="flex items-center gap-2 text-sm font-bold text-red-400">
+              <Lock className="w-4 h-4" /> Admin Secret Key
+            </label>
+            <input
+              type="password"
+              name="adminKey"
+              value={formData.adminKey}
+              onChange={handleChange}
+              placeholder="Enter Admin Passcode"
+              className="w-full bg-zinc-900 border border-red-900/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors"
+              required
+            />
           </div>
 
           {/* Submit Button */}
@@ -174,17 +245,15 @@ export default function UploadForm() {
             <Send className="w-5 h-5" />
             PUBLISH ASSET
           </button>
-
         </form>
-           <Link to={"/"}>
-            <button className="w-full mt-6 bg-cyan-600 hover:bg-cyan-500 text-white font-black text-lg py-4 rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all flex justify-center items-center gap-2"
- >
-            <House  className="w-5 h-5" />
+
+        <Link to={"/"}>
+          <button className="w-full mt-6 bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-lg py-4 rounded-xl transition-all flex justify-center items-center gap-2">
+            <House className="w-5 h-5" />
             Back To Dashboard
           </button>
-           </Link>
+        </Link>
       </div>
-      
     </div>
   );
 }

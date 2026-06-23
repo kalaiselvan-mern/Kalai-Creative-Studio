@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, BrowserRouter, Route, Outlet } from "react-router-dom";
-import LoginPage from "../pages/LoginPage";
 import Product from "../pages/Product";
 import Sidebar from "../layout/SideBar";
 import UploadForm from "../pages/UploadFiles";
@@ -23,7 +22,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
         <Route element={<Layout />}>
           <Route path="*" element={<Error />} />
           <Route path="/" element={<Product />} />

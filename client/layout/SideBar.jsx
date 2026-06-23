@@ -1,35 +1,21 @@
 import { useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { Store, UploadCloud, Wallet, Heart, Package, LogOut, Menu, X } from "lucide-react";
-import { useAuthStore } from "../store/useAuthStore";
+
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, logout } = useAuthStore();
-  
-  const role = user?.role || "admin";
 
-  // 🔴 ADMIN LINKS
-  const adminLinks = [
+  
+
+  const navItems =  [
     { name: "Store", icon: Store, to: "/" },
-   
+
      { name: "Join Studio Partner", icon: Heart, to: "/user/joinstudio" },
   ];
 
-  // 🔵 USER LINKS
-  const userLinks = [
-    { name: "Store", icon: Store, to: "/" },
-    { name: "Join Studio Partner", icon: Heart, to: "/user/joinstudio" },
-  ];
-
-  const navItems = role === "admin" ? adminLinks : userLinks;
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
 
   return (
     <>
@@ -59,12 +45,12 @@ export default function Sidebar() {
         {/* BRAND LOGO */}
         <div className="mb-8 flex justify-between items-center">
           <Link to={"/"} className="text-center cursor-pointer">
-            <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-              KALAI 
+
+            <h1 className="text-2xl text-center font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+              KALAI CREATIVE STUDIO 
             </h1>
-            <p className="text-sm text-blue-400/80 font-bold tracking-wider">
-              CREATIVE STUDIO {role === "admin" && <span className="text-cyan-300 ml-1">(ADMIN)</span>}
-            </p>
+                      
+          
           </Link>
           <button onClick={() => setIsOpen(false)} className="md:hidden text-cyan-500 hover:text-cyan-300">
             <X className="w-6 h-6" />
@@ -96,16 +82,13 @@ export default function Sidebar() {
         {/* USER PROFILE & LOGOUT */}
         <div className="mt-auto pt-4 border-t border-zinc-800/80 flex justify-between items-center">
           <div className="flex items-center gap-3 text-center">
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center font-black text-white shadow-lg shadow-cyan-500/20">
-              {user ? user.name.charAt(0).toUpperCase() : "U"}
-            </div>
+            
             <div className="flex flex-col">
-              <span className="font-bold text-sm text-zinc-200 truncate w-20">
-                {user?.name || "User"}
-              </span>
-              <span className="text-[10px] text-cyan-500 uppercase font-semibold">
-                {role}
-              </span>
+             
+                         
+              <h1  className=" text-sm  text-cyan-500 uppercase font-semibold">
+          afforatble price premium assets &  qulaity ❤️😍
+              </h1>
             </div>
           </div>
           

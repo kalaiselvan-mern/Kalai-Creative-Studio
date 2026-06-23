@@ -3,9 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import dbConnect from "./config/dbConnect.js"
-import router from "./routes/productRoute.js";
-import paymentRoute from "./routes/payementRoute.js";
-import authRoute from "./routes/authRoute.js";
+import ProductRoute from "./routes/productRoute.js";
+
 
  dotenv.config()
 
@@ -27,13 +26,14 @@ app.use(cors({
 
 // Product Data Api Logic 
 
-app.use("/api/product", router);
-app.use("/api/auth", authRoute  );
-app.use("api/payment", paymentRoute);
+app.use("/api/product", ProductRoute);
+
 
 app.get("/api",(req,res)=>{
   res.send({
-    name:"Kalai-Creative-Studio"
+    name:"Kalai-Creative-Studio",
+    admin:"Kalai",
+    message: "follow me on instagram @kalai_editzz"
   })
 })
 

@@ -40,6 +40,7 @@ export default function Message() {
             <div className="bg-zinc-800 p-3 rounded-lg w-3/4 text-zinc-200 shadow-md">
               Hi! How can we help you today?
             </div>
+     
           </div>
 
           <div className="p-3 border-t border-zinc-800 bg-zinc-900 flex gap-2">
@@ -48,7 +49,7 @@ export default function Message() {
               value={message}
               onChange={(e) => setMessage(e.target.value)} 
               onKeyDown={handleKeyPress} 
-              placeholder="Type a message..." 
+              placeholder="Type a message..."              
               className="flex-1 bg-zinc-950 border border-zinc-800 rounded-full px-4 py-2 text-white text-sm focus:outline-none focus:border-cyan-500 transition-colors"
             />
             <button 

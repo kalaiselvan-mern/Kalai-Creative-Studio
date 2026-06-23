@@ -23,6 +23,10 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:true
      },
+        youtubeLink:{
+        type:String,
+       default:""
+     },
      category:{
         type:String,
         enum:[ "4K CC", "Preset" ,"Text","Assets"],
