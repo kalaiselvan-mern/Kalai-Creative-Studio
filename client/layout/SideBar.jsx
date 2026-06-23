@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { Store, Heart, Menu, X } from "lucide-react";
+import LogoImage from "../src/assets/logo.png";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +53,7 @@ export default function Sidebar() {
           <Link to={"/"} className="flex flex-col items-center cursor-pointer gap-3 group">
             <div className="p-1 border border-zinc-800 rounded-full shadow-[0_0_15px_rgba(6,182,212,0.1)] group-hover:border-cyan-500/50 transition-colors">
               <img
-                src="../src/assets/Logo.png"
+                src={LogoImage}
                 alt="Kalai Creative Studio Logo"
                 className="w-16 h-16 rounded-full object-cover"
               />
