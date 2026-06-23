@@ -4,7 +4,7 @@ import Product from "../pages/Product";
 import Sidebar from "../layout/SideBar";
 import UploadForm from "../pages/UploadFiles";
 import Error from "../pages/Error";
-import JoinStudio from "../pages/JoinStudio";
+import Collab from "../pages/Collab";
 
 const Layout = () => {
   return (
@@ -17,7 +17,6 @@ const Layout = () => {
   );
 };
 
-// 2. THE MAIN APP COMPONENT
 function App() {
   return (
     <BrowserRouter>
@@ -25,9 +24,8 @@ function App() {
         <Route element={<Layout />}>
           <Route path="*" element={<Error />} />
           <Route path="/" element={<Product />} />
-          <Route path="/user/joinstudio" element={<JoinStudio />} />
+          <Route path="/collab" element={<Collab />} />
         </Route>
-
           <Route path="/admin/upload-files" element={<UploadForm />} />
       </Routes>
     </BrowserRouter>

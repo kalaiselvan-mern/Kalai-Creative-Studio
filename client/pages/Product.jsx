@@ -1,10 +1,23 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+  CardFooter,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Home, Video, ImageIcon, Zap, CaseUpper } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectValue, SelectTrigger } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+  SelectTrigger,
+} from "@/components/ui/select";
 import Message from "../layout/Message";
 import { Link } from "react-router-dom";
 
@@ -38,7 +51,7 @@ export default function Product() {
   const [product, setProduct] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All Product");
   const [searchQuery, setSearchQuery] = useState("");
-  
+
   // UPI Popup-க்காக புதுசா சேர்த்த States
   const [showUPI, setShowUPI] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -57,7 +70,7 @@ export default function Product() {
   // UPI Popup ஓபன் பண்ணும் பங்க்ஷன்
   const handlePayment = (item) => {
     setSelectedItem(item);
-    setShowUPI(true); 
+    setShowUPI(true);
   };
 
   const filteredProducts = product.filter((item) => {
@@ -206,23 +219,24 @@ export default function Product() {
       {showUPI && selectedItem && (
         <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-zinc-950 border border-zinc-800 p-8 rounded-2xl max-w-sm w-full text-center relative shadow-2xl">
-            
             {/* Close Button */}
-            <button 
-              onClick={() => setShowUPI(false)} 
+            <button
+              onClick={() => setShowUPI(false)}
               className="absolute top-4 right-4 text-zinc-500 hover:text-white font-bold text-xl"
             >
               ✕
             </button>
 
             <h2 className="text-2xl font-black text-white mb-2">Scan & Pay</h2>
-            <p className="text-zinc-400 text-sm mb-6">Pay via GPay, PhonePe, or Paytm</p>
+            <p className="text-zinc-400 text-sm mb-6">
+              Pay via GPay, PhonePe, or Paytm
+            </p>
 
             {/* Auto Generated QR Code */}
             <div className="bg-white p-3 rounded-xl inline-block mb-4 shadow-lg">
-              <img 
-                src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=YOUR_UPI_ID@bank&pn=Kalai%20Creative%20Studio&am=${selectedItem.price}&cu=INR`} 
-                alt="UPI QR Code" 
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=iamsingle126@oksbi&pn=Kalai%20Creative%20Studio&am=${selectedItem.price}&cu=INR`}
+                alt="UPI QR Code"
                 className="w-48 h-48"
               />
             </div>
@@ -242,23 +256,22 @@ export default function Product() {
 
             <div className="border-t border-zinc-800 pt-4 mt-2">
               <p className="text-xs text-zinc-500 mb-2">
-                After successful payment, send the screenshot to get your assets immediately.
+                After successful payment, send the screenshot to get your assets
+                immediately.
               </p>
-              <a 
-                href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_PHONE_NUMBER}?text=Hi Kalai, I just paid ₹${selectedItem.price} for the ${selectedItem.name}. Here is my screenshot!`} 
-                target="_blank" 
+              <a
+                href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_PHONE_NUMBER}?text=Hi Kalai, I just paid ₹${selectedItem.price} for the ${selectedItem.name}. Here is my screenshot!`}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-green-500 font-bold text-sm hover:underline"
               >
                 Click here to WhatsApp
               </a>
             </div>
-
           </div>
         </div>
-      )}  
+      )}
       {/* --- UPI Payment Modal End --- */}
-
     </main>
   );
 }
