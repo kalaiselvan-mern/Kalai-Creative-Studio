@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import dbConnect from "./config/dbConnect.js"
 import ProductRoute from "./routes/productRoute.js";
+import PaymentRoute from "./routes/paymentRoute.js";
 
 
  dotenv.config()
@@ -27,6 +28,7 @@ app.use(cors({
 // Product Data Api Logic 
 
 app.use("/api/product", ProductRoute);
+app.use("/api/payment" , PaymentRoute);
 
 
 app.get("/api",(req,res)=>{
