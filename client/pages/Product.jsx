@@ -52,13 +52,13 @@ export default function Product() {
   const [selectedCategory, setSelectedCategory] = useState("All Product");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // UPI Popup-க்காக புதுசா சேர்த்த States
+  
   const [showUPI, setShowUPI] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`https://kalai-creative-studio.onrender.com/api/product/all`)
+      .get(`${API_URL}/api/product/all`)
       .then((res) => {
         setProduct(res.data.data);
       })
@@ -67,30 +67,11 @@ export default function Product() {
       });
   }, []);
 
-  // UPI Popup ஓபன் பண்ணும் பங்க்ஷன்
-  // const handlePayment = (item) => {
-  //   setSelectedItem(item);
-  //   setShowUPI(true);
-  // };
-  const handlePayment = async (item) => {
-    try {
-      const { data } = await axios.post(`${API_URL}/api/payment/checkout`, {
-        amount: item.price,
-        productId: item._id,
-        productName: item.name 
-      });
+    const handlePayment = (item) => {
+      setSelectedItem(item);
+      setShowUPI(true);
+    };
 
-      if (data.success && data.paymentUrl) {
-        // பேக்கெண்ட்ல இருந்து லிங்க் வந்ததும் கஸ்டமரை Instamojo பேஜுக்கு அனுப்புறோம்
-        window.location.href = data.paymentUrl; 
-      } else {
-        alert("Payment gateway issue!");
-      }
-    } catch (error) {
-      console.error(error);
-      alert("Server error, try again!");
-    }
-  };
 
   const filteredProducts = product.filter((item) => {
     const activeEnum = categories.find(
