@@ -9,6 +9,4 @@ productRoute.get("/all", getAllProduct)
 productRoute.post("/create" , productCreate)
 productRoute.put("/update/:id", updateProduct)
 
-
-
 export default productRoute;

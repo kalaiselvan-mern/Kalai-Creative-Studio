@@ -25,8 +25,8 @@ function App() {
           <Route path="*" element={<Error />} />
           <Route path="/" element={<Product />} />
           <Route path="/collab" element={<Collab />} />
-        </Route>
           <Route path="/admin/upload-files" element={<UploadForm />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

@@ -21,6 +21,7 @@ export default function Message() {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSend();
+      
     }
   };
 

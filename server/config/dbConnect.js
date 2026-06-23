@@ -11,7 +11,7 @@ console.log(`MongoDB Connected SucuessFully ❤️`)
     console.error("DataBase Connection Error🛑 " ,{message:error.message});
     process.exit(1)
   }
- 
 }
+
 
 export default dbConnect;

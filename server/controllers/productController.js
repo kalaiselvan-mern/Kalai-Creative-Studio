@@ -19,6 +19,7 @@ export const productCreate = async (req, res) => {
       downloadUrl,
       category,
       isPremium,
+
       youtubeLink 
     });
 

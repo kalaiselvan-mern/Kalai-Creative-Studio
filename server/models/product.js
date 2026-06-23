@@ -29,7 +29,7 @@ const productSchema = new mongoose.Schema({
      },
      category:{
         type:String,
-        enum:[ "4K CC", "Preset" ,"Text","Assets"],
+        enum:[ "4K CC",   "Preset" ,"Text","Assets"],
         default:"4K CC"
      },
      isPremium:{

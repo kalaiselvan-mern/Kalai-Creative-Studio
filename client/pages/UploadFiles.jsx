@@ -52,7 +52,7 @@ export default function UploadForm() {
       );
       alert("Product Uploaded Successfully! 🔥");
       
-      // அப்லோட் ஆனதும் ஃபார்மை காலியாக்க இதையும் அப்டேட் பண்ணியாச்சு
+    
       setFormData({
         name: "",
         description: "",
@@ -167,7 +167,7 @@ export default function UploadForm() {
             </div>
           </div>
 
-          {/* 4. YouTube Preview Link (புதுசா சேர்த்தது) */}
+          {/* 4. YouTube Preview Link  */}
           <div className="space-y-2">
             <label className="flex items-center gap-2 text-sm font-bold text-zinc-400">
               <Video className="w-4 h-4 text-cyan-500" /> YouTube Preview Link (Optional)
@@ -194,7 +194,7 @@ export default function UploadForm() {
                 onChange={handleChange}
                 className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors appearance-none"
               >
-                <option value="4K CC">4K CC Presets</option>
+                <option value="4K CC">4K CC & Presets</option>
                 <option value="Assets">Assets</option>
                 <option value="Preset">Thumbnail Preset</option>
                 <option value="Text">Text Animation</option>
