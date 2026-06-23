@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { Store, Heart, Menu, X } from "lucide-react";
-import LogoImage from "../src/assets/logo.png";
+import LogoImage from "../assets/Logo.png"
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
+
 
   const navItems = [
     { name: "Store", icon: Store, to: "/" },

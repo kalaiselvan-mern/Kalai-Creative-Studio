@@ -1,27 +1,59 @@
-🚀 Kalai Creative Studio
-Kalai Creative Studio என்பது எடிட்டர்களுக்கான பிரீமியம் டிஜிட்டல் அசெட்ஸ் மற்றும் ப்ரொபஷனல் CC பிரீசெட்களை வழங்கும் ஒரு நவீன தளம். இது MERN Stack தொழில்நுட்பத்தைப் பயன்படுத்தி உருவாக்கப்பட்ட ஒரு முழுமையான இ-காமர்ஸ் மற்றும் மேனேஜ்மென்ட் சிஸ்டம்.
+<h1 align="center">🎬 Kalai Creative Studio</h1>
 
-🌐 Live Preview
-👉 https://kalai-creative-studio.vercel.app/
+<p align="center">
+  <b>A Premium Digital Asset Marketplace for Video Editors & Creators.</b><br>
+  Built with the MERN Stack, offering high-quality CC presets, text animations, and thumbnail designs.
+</p>
 
-🛠️ Tech Stack
-Frontend: React.js, Tailwind CSS, Lucide React, Zustand, React Hook Form.
+<div align="center">
 
-Backend: Node.js, Express.js.
+  [![Live Preview](https://img.shields.io/badge/Live_Preview-Click_Here-06B6D4?style=for-the-badge&logo=vercel)](https://kalai-creative-studio.vercel.app/)
+  
+</div>
 
-Database: MongoDB (with Mongoose).
+---
 
-Authentication: Google OAuth 2.0 (google-auth-library).
+## 📖 About The Project
 
-Deployment: Vercel.
+**Kalai Creative Studio** is a fully functional, modern e-commerce platform designed specifically for the video editing community. It allows users to browse and purchase premium digital assets securely. The platform also includes a dynamic "Creator Hub" where other editors can join as studio partners to sell their own presets.
 
-🚀 Key Features
-Role-Based Access: Admin மற்றும் User என இரண்டு தனித்தனி லாகின் வசதிகள்.
+## ✨ Key Features
 
-Secure Auth: Google OAuth மூலம் பாதுகாப்பான லாகின்.
+* **🔐 Role-Based Access Control:** Distinct, secure logins for Admin and standard Users.
+* **🛡️ Secure Authentication:** Integrated **Google OAuth 2.0** for seamless and secure user sign-ins.
+* **💳 Dynamic Payment Integration:** Built-in UPI & Payment Gateway support for instant, hassle-free transactions.
+* **📦 Digital Delivery:** Automated delivery of digital assets (Google Drive links) upon successful purchase.
+* **🤝 Creator Marketplace:** "Join Studio Partner" feature allowing external creators to collaborate and sell.
+* **📱 Responsive UI/UX:** Highly responsive, dark-themed, and cinematic UI optimized for all devices.
 
-Dynamic Dashboard: சேல்ஸ், ரெவென்யூ மற்றும் டிரான்சாக்ஷன்களை உடனுக்குடன் காட்டும் டேஷ்போர்டு.
+---
 
-Payout System: எடிட்டர்கள் தங்கள் வருவாயை எளிதாக வித் டிரா செய்யும் வசதி.
+## 🛠️ Tech Stack
 
-Modern UI: நியான் மற்றும் கிளாஸ்மார்பிசம் டிசைனில் உருவான அழகான இடைமுகம்.
+### **Frontend**
+* **React.js** - UI Library
+* **Tailwind CSS + Shadcn UI** - Utility-first styling
+* **Zustand** - Global State Management
+* **Lucide React** - Beautiful SVG icons
+* **React Hook Form** - Efficient form handling
+* **React Router** - Routing for client-side navigation
+* 
+
+### **Backend & Database**
+* **Node.js & Express.js** - Robust REST API architecture
+* **MongoDB & Mongoose** - NoSQL Database & Object Data Modeling
+* **Google Auth Library** - OAuth 2.0 implementation
+
+### **Deployment**
+* **Vercel** - Frontend & Backend hosting
+
+---
+
+## 🚀 Local Development Setup
+
+To run this project locally on your machine, follow these steps:
+
+### 1. Clone the repository
+```bash
+git clone [https://github.com/kalaiselvan-mern/Kalai-Creative-Studio.git](https://github.com/kalaiselvan-mern/Kalai-Creative-Studio.git)
+cd Kalai-Creative-Studio
