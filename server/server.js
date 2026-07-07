@@ -28,13 +28,9 @@ app.use(cors({
 
 app.use("/api/product", ProductRoute);
 
-app.get("/api",(req,res)=>{
-  res.send({
-    name:"Kalai-Creative-Studio",
-    admin:"Kalai",
-    message: "follow me on instagram @kalai_editzz"
-  })
-})
+app.get('/', (req, res) => {
+    res.status(200).send("Kalai Creative Studio Backend is Running Perfectly! 🚀");
+});
 
 app.listen(PORT,()=>{
  console.log(`Server Is Run Smoothly",http://localhost:${PORT}`)
