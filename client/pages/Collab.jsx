@@ -33,7 +33,7 @@ export default function Collab() {
   };
 
   const socialLinks = [
-    { id: 1, icon: <FaGithub size={22} />, url: "https://github.com/kalaiselvan-mern", neon: "border-gray-500 text-white" },
+    { id: 1, icon: <FaGithub size={22} />, url: "https://github.com/KalaiCodex", neon: "border-gray-500 text-white" },
     { id: 2, icon: <FaLinkedin size={22} />, url: "https://www.linkedin.com/in/kalai-kalai", neon: "border-blue-500 text-blue-400" },
     { id: 3, icon: <FaFacebook size={22} />, url: "https://www.facebook.com/share/18WvAZ15YF/", neon: "border-blue-700 text-blue-500" },
     { id: 4, icon: <FaInstagram size={22} />, url: "https://www.instagram.com/chellakutty_kalai?igsh=ZzZ4ZmVyc2JoMnBz", neon: "border-pink-500 text-pink-400" },

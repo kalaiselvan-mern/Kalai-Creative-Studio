@@ -31,7 +31,7 @@ export default function Message() {
         <div className="fixed right-6 bottom-24 w-80 bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5">
           
           <div className="bg-gradient-to-r from-cyan-600 to-blue-600 p-4 flex justify-between items-center text-white">
-            <h3 className="font-bold text-sm">Kalai Studio Support</h3>
+            <h3 className="font-bold text-sm">CoreX Studio Support</h3>
             <button onClick={() => setOpen(false)} className="hover:text-zinc-300 cursor-pointer">
               <X size={20} />
             </button>

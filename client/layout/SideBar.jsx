@@ -54,12 +54,12 @@ export default function Sidebar() {
             <div className="p-1 border border-zinc-800 rounded-full shadow-[0_0_15px_rgba(6,182,212,0.1)] group-hover:border-cyan-500/50 transition-colors">
               <img
                 src={LogoImage}
-                alt="Kalai Creative Studio Logo"
+                alt="CoreX Studio"
                 className="w-16 h-16 rounded-full object-cover"
               />
             </div>
             <h1 className="text-xl font-black leading-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-              KALAI CREATIVE<br />STUDIO
+              CoreX<br />STUDIO
             </h1>
           </Link>
         </div>

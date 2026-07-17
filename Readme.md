@@ -1,5 +1,5 @@
 <img width="1909" height="909" alt="Screenshot 2026-06-23 144503" src="https://github.com/user-attachments/assets/d386ed22-d369-48cb-9800-8de81f0d8898" />
-<h1 align="center">🎬 Kalai Creative Studio</h1>
+<h1 align="center">🎬 CoreX Studio</h1>
 
 <p align="center">
   <b>A Premium Digital Asset Marketplace for Video Editors & Creators.</b><br>
@@ -8,7 +8,7 @@
 
 <div align="center">
 
-  [![Live Preview](https://img.shields.io/badge/Live_Preview-Click_Here-06B6D4?style=for-the-badge&logo=vercel)](https://kalai-creative-studio.vercel.app/)
+  [![Live Preview](https://img.shields.io/badge/Live_Preview-Click_Here-06B6D4?style=for-the-badge&logo=vercel)](https://kalai-creative-studio.vercel.app)
   
 </div>
 
@@ -16,7 +16,7 @@
 
 ## 📖 About The Project
 
-**Kalai Creative Studio** is a fully functional, modern e-commerce platform designed specifically for the video editing community. It allows users to browse and purchase premium digital assets securely. The platform also includes a dynamic "Creator Hub" where other editors can join as studio partners to sell their own presets.
+**CoreX Studio** is a fully functional, modern e-commerce platform designed specifically for the video editing community. It allows users to browse and purchase premium digital assets securely. The platform also includes a dynamic "Creator Hub" where other editors can join as studio partners to sell their own presets.
 
 ## ✨ Key Features
 
@@ -56,5 +56,5 @@ To run this project locally on your machine, follow these steps:
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/kalaiselvan-mern/Kalai-Creative-Studio.git](https://github.com/kalaiselvan-mern/Kalai-Creative-Studio.git)
-cd Kalai-Creative-Studio
+git clone [https://github.com/KalaiCodex/Corex-Studio.git](https://github.com/KalaiCodex/Corex-Studio.git)
+cd CoreX-Studio
