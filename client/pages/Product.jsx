@@ -93,7 +93,10 @@ export default function Product() {
     <main className="min-h-screen w-full bg-black text-white p-6 md:p-12 lg:p-16 selection:bg-cyan-500/30 flex flex-col items-center relative">
       <header className="w-full max-w-4xl text-center mb-16 mt-8">
         <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 mb-4">
-        CoreX Studio
+        CoreX Studio  <Link  to={"/admin/upload-files"}>
+       <span className=" ml-2 inline-flex items-center justify-center  text-2xl font-semibold tracking-widest text-gray-400   align-middle">
+  V.1.0
+</span></Link>
         </h1>
         <p className="text-zinc-400 text-sm md:text-lg font-medium tracking-wide">
           Premium Editing Assets & Professional CC Presets
